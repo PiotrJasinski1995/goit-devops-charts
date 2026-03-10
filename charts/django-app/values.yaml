@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: REPLACE_ME_ECR_REPOSITORY
+  repository: 167357861486.dkr.ecr.us-east-2.amazonaws.com/django-app
   tag: latest
   pullPolicy: IfNotPresent
 
