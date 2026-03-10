@@ -71,7 +71,7 @@ The most important configuration is located in:
 charts/django-app/values.yaml
 ```
 
-Example:
+Example configuration:
 
 ```
 replicaCount: 1
@@ -95,3 +95,25 @@ The `image.tag` value is automatically updated by the Jenkins pipeline.
 Argo CD monitors this repository and deploys the application defined in the Helm chart.
 
 When the `values.yaml` file is updated, Argo CD automatically updates the running application in the Kubernetes cluster.
+
+---
+
+# Autoscaling
+
+The Helm chart includes a **Horizontal Pod Autoscaler (HPA)** configuration.
+
+The autoscaler is defined in:
+
+```
+charts/django-app/templates/hpa.yaml
+```
+
+The HPA scales the Django application pods based on CPU utilization.
+
+Example configuration:
+
+- minimum replicas: 1
+- maximum replicas: 3
+- target CPU utilization: 70%
+
+This ensures the application can automatically scale depending on workload.
